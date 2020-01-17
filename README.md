@@ -94,6 +94,52 @@ npm install || cnpm i
     }
 
 
+3. 团购列表
+    /mobile/groupon/getNavList   // 页面加载获取导航栏模块列表
+
+    参数
+    {}
+
+    响应数据
+    {
+        tabTitle:['照片书','热门活动']
+    }
+
+    /mobile/groupon/getCardList     // 获取所有导航栏模块卡片数据
+
+    参数
+    {}
+
+    响应数据
+    {
+        getCardList: [
+                    // tabTitle 导航栏第一个模块页面卡片数据  tabTitle:['照片书','热门活动'], 
+                    [
+                        {
+                            imgSrc: '',
+                            activeName: '莫兰迪油白系列',
+                            ad: '大师同款，限时特惠！售完即止，手慢无!',
+                            originalPrice: [308,388],               // 原价(范围)
+                            stock: 20,
+                            activeStartTime: '1568465156',
+                            activeEndTime: '189456156',
+                            price: [240,308],                       // 活动价(范围)
+                        },
+                        {
+                            imgSrc: '',
+                            activeName: '精装布面小开本',
+                            ad: '大师同款，限时特惠！售完即止，手慢无!',
+                            originalPrice: [308,388],               // 原价(范围)
+                            stock: 88,
+                            activeStartTime: '1568465156',
+                            activeEndTime: '189456156',
+                            price: [240,308],                       // 活动价(范围,无范围数组一个元素就好)
+                        }
+                    ],
+                    // tabTitle 导航栏第二个模块页面卡片数据，依次类推
+                    []
+                ]
+    }
 
 
 
