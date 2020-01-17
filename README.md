@@ -113,9 +113,10 @@ npm install || cnpm i
     响应数据
     {
         getCardList: [
-                    // tabTitle 导航栏第一个模块页面卡片数据  tabTitle:['照片书','热门活动'], 
-                    [
+            // tabTitle 导航栏第一个模块页面卡片数据, 
+            [
                         {
+							grouponCardId: '01',					// 每个模块的每个卡片拥有唯一键(跳转详情页作为请求参数)
                             imgSrc: '',
                             activeName: '莫兰迪油白系列',
                             ad: '大师同款，限时特惠！售完即止，手慢无!',
@@ -126,6 +127,7 @@ npm install || cnpm i
                             price: [240,308],                       // 活动价(范围)
                         },
                         {
+							grouponCardId: '02',						// 每个模块的每个卡片拥有唯一键
                             imgSrc: '',
                             activeName: '精装布面小开本',
                             ad: '大师同款，限时特惠！售完即止，手慢无!',
@@ -135,11 +137,44 @@ npm install || cnpm i
                             activeEndTime: '189456156',
                             price: [240,308],                       // 活动价(范围,无范围数组一个元素就好)
                         }
-                    ],
-                    // tabTitle 导航栏第二个模块页面卡片数据，依次类推
-                    []
-                ]
+            ],
+            // tabTitle 导航栏第二个模块页面卡片数据，依次类推
+            [
+						{
+							grouponCardId: '03',						// 每个模块的每个卡片拥有唯一键
+						    imgSrc: '',
+						    activeName: '热门活动产品',
+						    ad: '大师同款，限时特惠！售完即止，手慢无!',
+						    originalPrice: [308,388],               // 原价(范围)
+						    stock: 88,
+						    activeStartTime: '1568465156',
+						    activeEndTime: '189456156',
+						    price: [240,308],                       // 活动价(范围,无范围数组一个元素就好)
+						}
+			]                    
+        ]
     }
+
+
+4. 团购详情     (未完待续...)
+    /mobile/groupon/getDetailsInfo          // 获取团购列表卡片对应详情数据
+
+    参数
+    {
+        grouponCardId: ''    (string)
+    }
+
+    响应数据
+    {
+        detailsInfo: {
+            bannerImgList: ['','',''],					// banner 图片路径
+			soldNum: 33,								// 已售件数
+			productDetailsImgList: ['','','','','','']	// 产品详情图片路径			
+		}
+    }
+
+
+
 
 
 
