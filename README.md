@@ -26,7 +26,6 @@ npm install || cnpm i
 ------------------------------------------------------------ 接口部分 --------------------------------------------------------
 1. 购物车
     /mobile/cart/getOrderList		查询购物车卡片数据
-
     参数
     {
         openId: ‘12149212148’  用户微信openid
@@ -69,12 +68,10 @@ npm install || cnpm i
 
 2. 个人中心
     /mobile/personal/getUserInfo         获取用户openid
-    
     参数
     {
         code: 'HGWAOHIGIAWOIGOH'      uni.login登陆参数
     }
-    
     响应数据
     {
         openId : 'afgwhalgiwahil'
@@ -82,12 +79,10 @@ npm install || cnpm i
 
 
     /mobile/personal/walletOpen          开通一本钱包
-    
     参数
     {
         后台定
     }
-    
     响应数据
     {
         isOpen : true
@@ -96,20 +91,16 @@ npm install || cnpm i
 
 3. 团购列表
     /mobile/groupon/getNavList   // 页面加载获取导航栏模块列表
-
     参数
     {}
-
     响应数据
     {
         tabTitle:['照片书','热门活动']
     }
 
     /mobile/groupon/getCardList     // 获取所有导航栏模块卡片数据
-
     参数
     {}
-
     响应数据
     {
         getCardList: [
@@ -158,12 +149,10 @@ npm install || cnpm i
 
 4. 团购详情     (未完待续...)
     /mobile/groupon/getDetailsInfo          // 获取团购列表卡片对应详情数据
-
     参数
     {
         grouponCardId: ''    (string)
     }
-
     响应数据
     {
         detailsInfo: {
@@ -172,6 +161,107 @@ npm install || cnpm i
 			productDetailsImgList: ['','','','','','']	// 产品详情图片路径			
 		}
     }
+
+
+5. 我的书架     (待完善)
+    /mobile/bookshelf/getBoardInfo            // 获取用户最近编辑的作品名
+    参数
+    {}
+    响应数据
+    boardInfo: {
+		bookName: '哈哈哈哈哈'
+	},
+
+
+
+
+
+    /mobile/bookshelf/getWorksList            // 获取我的书架卡片数据(无则返回空对象)
+    参数
+    {}
+    响应数据
+    {
+        worksList: [
+                    {
+                        imgSrc: '',						// 作品封面图
+                        bookName: '再见杰克',
+                        bookType: '精装布面本小开本',
+                        bookSpec: '192P',
+						editType: '自编辑',
+						status: 0						// 作品卡片状态 0: 编辑中  1: 已完成
+                    },
+                    {
+                        imgSrc: '',
+                        bookName: '他夏了夏天',
+                        bookType: '精装布面本小开本',
+                        bookSpec: '192P',
+						editType: '设计师',
+						status: 1
+                    },
+					
+        ]
+    }
+
+
+
+6. 我的钱包     (待完善)
+    /mobile/wallet/getWalletInfo           // 获取用户余额
+    参数
+    {
+        openId: 'gaghlawigl2ih3li',          // 用户数据表主键openId?
+    }
+    响应数据
+    {
+        balance: '180.00',
+        isOpen: ture                        // 用户是否开通钱包标识   false  true   
+    }
+
+
+    /mobile/wallet/quotaOptionsList           // 获取充值额度选项数据
+    参数
+    {}
+    响应数据
+    {
+        quotaOptionsList: [
+					{
+						quotaText: '200',	// 壹本币额度
+						quotaGive: '20',	// 充值送 
+						quota: '200.00',	// 实际应付金额
+						isDouble: '0',		// 是否具有首充双倍优惠活动		0: 无  1: 有
+						isRecommend: '0',	// 是否推荐			0: 不推荐	1: 推荐
+						select: '0',		// 写死
+					},
+					{
+						quotaText: '500',	// 壹本币额度
+						quotaGive: '100',	// 充值送 
+						quota: '500.00',	// 实际应付金额
+						isDouble: '0',		// 是否具有首充双倍优惠活动		0: 无  1: 有
+						isRecommend: '0',	// 是否推荐			0: 不推荐	1: 推荐
+						select: '0',		// 写死
+					},
+					{
+						quotaText: '1000',	// 壹本币额度
+						quotaGive: '250',	// 充值送 
+						quota: '250.00',	// 实际应付金额
+						isDouble: '1',		// 是否具有首充双倍优惠活动		0: 无  1: 有
+						isRecommend: '1',	// 是否推荐			0: 不推荐	1: 推荐
+						select: '0',		// 写死
+					},
+					{
+						quotaText: '3000',	// 壹本币额度
+						quotaGive: '1000',	// 充值送 
+						quota: '1000.00',	// 实际应付金额
+						isDouble: '1',		// 是否具有首充双倍优惠活动		0: 无  1: 有
+						isRecommend: '1',	// 是否推荐			0: 不推荐	1: 推荐
+						select: '0',		// 写死
+					},
+		]
+    }
+
+
+
+
+
 
 
 
