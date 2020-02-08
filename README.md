@@ -1,30 +1,8 @@
 # 壹本印画小程序
 
-## Project setup 安装依赖
-```
-npm install || cnpm i
-
-```
-
-## 开发环境启动
-## HbuilderX 工具 运行(R) -> 运行到小程序模拟器(M)
-
-// 订单列表按钮 我要加印
-将订单卡片内的所有订单项加入购物车并跳转购物车，每个订单项构成一张卡片并自动勾选上计算价格
- 
-
-// 订单列表按钮 继续支付
-直接调起支付
-
-
-// 订单列表按钮 确认收货
-跳转到订单详情页 状态传值 已完成
-
-
-
 
 ------------------------------------------------------------ 接口部分 --------------------------------------------------------
-1. 购物车
+1. 购物车    (待完善)
     /mobile/cart/getOrderList		查询购物车卡片数据
     参数
     {
@@ -66,7 +44,7 @@ npm install || cnpm i
     }
 
 
-2. 个人中心
+2. 个人中心     (待完善)
     /mobile/personal/getUserInfo         获取用户openid
     参数
     {
@@ -89,7 +67,7 @@ npm install || cnpm i
     }
 
 
-3. 团购列表
+3. 团购列表     (待完善)
     /mobile/groupon/getNavList   // 页面加载获取导航栏模块列表
     参数
     {}
@@ -147,7 +125,7 @@ npm install || cnpm i
     }
 
 
-4. 团购详情     (未完待续...)
+4. 团购详情     (待完善)
     /mobile/groupon/getDetailsInfo          // 获取团购列表卡片对应详情数据
     参数
     {
@@ -257,6 +235,434 @@ npm install || cnpm i
 					},
 		]
     }
+
+
+
+7. 结算页面 (待完善)
+    /mobile/settlement/getUserReceiptInfoList          // 获取用户编辑的收件信息列表
+    参数
+    {
+        openId: 'gagwagagwagawgga'                  
+    }
+    响应数据
+    {
+        userReceiptInfoList: [                      
+                    {
+                        userName: '豆豆',
+                        phoneNumber: '15995520706',
+                        fullAddress: '上海市徐汇区长桥街道平福路漕河泾聚鑫园188号3号楼3楼',
+                        isSelect: '1'           // 写死
+                    },
+                    {
+                        userName: 'alice',
+                        phoneNumber: '15995520706',
+                        fullAddress: '上海市徐汇区长桥街道平福路漕河泾聚鑫园188号3号楼3楼',
+                        isSelect: '0'           // 写死
+                    },
+                    {
+                        userName: 'bans',
+                        phoneNumber: '18155925790',
+                        fullAddress: '杭州市西湖区',
+                        isSelect: '0'           // 写死
+                    }
+                ],
+    }
+
+
+    /mobile/settlement/getSettlementInfo            // 获取用户结算信息
+    参数
+    {
+        orderId: '1001'                 // 购物车用户点击结算按钮请求接口创建订单orderId  传值到结算页
+    }
+    响应数据
+    {
+        cardSpecList: [
+                        {
+                            imgSrc: '',                 // 作品封面
+                            bookName: '书名书名',
+                            univalence: '176',          // 单价
+                            bookType: '32开标准本',
+                            editType: '自编辑',
+                            count: 2,
+                            pageCount: '96P',
+                            bookSize: '144*192mm',
+                        },
+                        {
+                            imgSrc: '',                 // 作品封面
+                            bookName: '书名书名',
+                            univalence: '176',          // 单价
+                            bookType: '32开标准本',
+                            editType: '自编辑',
+                            count: 1,
+                            pageCount: '96P',
+                            bookSize: '144*192mm',
+                        }
+                    ],
+                    freight: '12',                      // 运费    
+                    totalCount: '10',                   // 共计件数
+                    totalPrice: '188.00',               // 小计
+                    cashCodeDiscount: '0.00',           // 现金码优惠
+                    balance: '198.00',                  // 余额
+                    realPay: '188.00',                  // 实付款  (受现金码优惠丶运费等影响)
+
+                    
+    }
+
+
+
+8. 图库         (待完善)
+    /mobile/gallery/getImgList            // 获取用户图库所有图片
+    参数
+    {
+        openId: 'adwafawwafawfwafafwa'
+    }
+    响应数据
+    {
+        imgList: [
+                    {
+                        imgSrc: '',       // 图片src
+                        dataIndex: '1001',  // 图片标识，删除 移动 填图 等操作以dataIndex作为参数
+                    },
+                    {
+                        imgSrc: '',       // 图片src
+                        dataIndex: '1002',  // 图片标识，删除 移动 填图 等操作以dataIndex作为参数
+                    },
+                ]
+    }
+
+
+
+9. 所有产品
+    /mobile/classification/getNavList            // 获取所有产品信息
+    参数
+    {}
+    响应数据
+    {
+        navList: [
+            // ------------------------------照片书-------------------------------
+                    {
+                        text:'照片书',
+                        isActive:true,
+                        produceTitle: '自编辑产品',
+                        produceTips: '您可以选择以下产品并在壹本印画编辑平台上编辑作品，体验自己创作的乐趣。',
+                        background: 'orange',
+                        productList: [
+                            {
+                                // 32开标准本
+                                title: '32开标准本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    },
+                                    {
+                                        imgSrc: '',
+                                        text: '壹本情书',
+                                        price: 138
+                                    }
+                                ]
+                            },
+                            {
+                                // 精装布面本
+                                title: '精装布面本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    },
+                                    {
+                                        imgSrc: '',
+                                        text: '壹本情书',
+                                        price: 138
+                                    },
+                                    {
+                                        imgSrc: '',
+                                        text: '壹本情书',
+                                        price: 138
+                                    },
+                                    {
+                                        imgSrc: '',
+                                        text: '壹本情书',
+                                        price: 138
+                                    }
+                                ]
+                            },
+                            {
+                                // MOOK
+                                title: 'MOOK',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    }
+                                   
+                                ]
+                            },
+                            {
+                                // 对裱写真本
+                                title: '对裱写真本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    },
+                                    {
+                                        imgSrc: '',
+                                        text: '壹本情书',
+                                        price: 138
+                                    }
+                                ]
+                            },
+                            {
+                                // 软皮映画本
+                                title: '软皮映画本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    },
+                                    {
+                                        imgSrc: '',
+                                        text: '壹本情书',
+                                        price: 138
+                                    }
+                                ]
+                            },
+                            {
+                                // 精装映画本
+                                title: '精装映画本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    },
+                                    {
+                                        imgSrc: '',
+                                        text: '壹本情书',
+                                        price: 138
+                                    }
+                                ]
+                            },
+                            {
+                                // 原画影刊本
+                                title: '原画影刊本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    }
+                                    
+                                ]
+                            },
+                        ]
+                    },
+                    
+                    // ------------------------------小日志-------------------------------
+                    {
+                        text:'小日志',
+                        isActive:false,
+                        produceTitle: '自编辑产品',
+                        produceTips: '您可以选择以下产品并在壹本印画编辑平台上编辑作品，体验自己创作的乐趣。',
+                        background: 'orange',
+                        productList: [
+                            {
+                                // 
+                                
+                            }
+                        ]
+                    },
+                    
+                    // ------------------------------明信片-------------------------------
+                    {
+                        text:'明信片',
+                        isActive:false,
+                        produceTitle: '自编辑产品',
+                        produceTips: '您可以选择以下产品并在壹本印画编辑平台上编辑作品，体验自己创作的乐趣。',
+                        background: 'orange',
+                        productList: [
+                            {
+                                // 
+                                
+                            }
+                        ]
+                    },
+                    
+                    // ------------------------------手账本-------------------------------
+                    {
+                        text:'手账本',
+                        isActive:false,
+                        produceTitle: '自编辑产品',
+                        produceTips: '您可以选择以下产品并在壹本印画编辑平台上编辑作品，体验自己创作的乐趣。',
+                        background: 'orange',
+                        productList: [
+                            {
+                                // 
+                                
+                            }
+                        ]
+                    },
+                    
+                    // ------------------------------台历-------------------------------
+                    {
+                        text:'台历',
+                        isActive:false,
+                        produceTitle: '自编辑产品',
+                        produceTips: '您可以选择以下产品并在壹本印画编辑平台上编辑作品，体验自己创作的乐趣。',
+                        background: 'orange',
+                        productList: [
+                            {
+                                // 
+                                
+                            }
+                        ]
+                    },
+                    
+                    // ------------------------------联名款-------------------------------
+                    {
+                        text:'联名款',
+                        isActive:false,
+                        produceTitle: '自编辑产品',
+                        produceTips: '您可以选择以下产品并在壹本印画编辑平台上编辑作品，体验自己创作的乐趣。',
+                        background: 'orange',
+                        productList: [
+                            {
+                                // 
+                                
+                            }
+                        ]
+                    },
+                    
+                    // ------------------------------批量定制-------------------------------
+                    {
+                        text:'批量定制',
+                        isActive:false,
+                        produceTitle: '批量定制服务',
+                        produceTips: '个人/团体/企业客户的定制数量需求，壹本印画都有适合您的解决方案。',
+                        background: 'black',
+                        bottomTips: {
+                            title: '大订单服务',
+                            height: 'bottomTips450',
+                            text: [
+                                '如需订购500份或者更多数量的产品，请联系我们获取专属解决方案。',
+                                '印刷和运输大约需要3至6周。',
+                                '详情请联系客服代表壹朵'
+                            ],
+                            qrcode: ''
+                        },
+                        productList: [
+                            {
+                                // 
+                                
+                            }
+                        ]
+                    },
+                    
+                    // ------------------------------设计服务-------------------------------
+                    {
+                        text:'设计服务',
+                        isActive:false,
+                        produceTitle: '设计师服务',
+                        produceTips: '选择产品并将文件打包上传，我们将为您提供设计师排版服务，省时省心。',
+                        background: 'green',
+                        bottomTips: {
+                            title: '团体/企业定制',
+                            height: 'bottomTips400',
+                            text: [
+                                '如需团体/企业客户设计及批量定制服务，请联系我们获取专属解决方案。',
+                                '详情请联系客服代表壹朵'
+                            ],
+                            qrcode: ''
+                        },
+                        productList: [
+                            {
+                                // 32开标准本
+                                title: '32开标准本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    }
+                                   
+                                ]
+                            },
+                            {
+                                // 精装布面本
+                                title: '精装布面本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    }
+                                   
+                                ]
+                            },
+                            {
+                                // MOOK
+                                title: 'MOOK',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    }
+                                   
+                                ]
+                            },
+                            {
+                                // 精装映画本
+                                title: '精装映画本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    }
+                                   
+                                ]
+                            },
+                            {
+                                // 原画影刊本
+                                title: '原画影刊本',
+                                productOptionsList: [
+                                    {
+                                        imgSrc: '',
+                                        text: '32开标准本',
+                                        price: 138
+                                    }
+                                   
+                                ]
+                            }
+                        ]
+                    }
+        ]
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
