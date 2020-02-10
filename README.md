@@ -2,7 +2,7 @@
 
 
 ------------------------------------------------------------ 接口部分 --------------------------------------------------------
-1. 购物车    (待完善)
+1. 购物车   
     /mobile/cart/getOrderList		查询购物车卡片数据
     参数
     {
@@ -23,6 +23,7 @@
                 tips:['*第一本98元，同一内容加印价88元'],
                 quantity: 1,                // 写死 
                 isSelect: false             // 写死
+                dataIndex: '01'     // 卡片标识
             },
             {
                 isgroupon: true,
@@ -38,10 +39,25 @@
                 ],
                 quantity: 1,                // 写死
                 isSelect: false             // 写死
+                dataIndex: '02'     // 卡片标识
             }
         ],
         
     }
+
+    /mobile/cart/delteCard		删除购物车卡片
+    参数
+    {
+        dataIndex: dataIndex  // 卡片对应标识dataIndex
+    }
+    响应数据
+    {
+        200
+    }
+
+    /mobile/cart/settleAccounts		结算购物车  复用公众号接口  细节再做交流
+    
+
 
 
 2. 个人中心     (待完善)
@@ -58,16 +74,26 @@
 
     /mobile/personal/walletOpen          开通一本钱包
     参数
-    {
-        后台定
-    }
+    {}
     响应数据
     {
-        isOpen : true
+        200
+    }
+
+    /mobile/personal/checkBalance          查询钱包余额(用户每次进入个人中心都会调用查询)
+    参数
+    {}
+    响应数据
+    {
+        balance: '180.00'       
     }
 
 
-3. 团购列表     (待完善)
+
+    
+
+
+3. 团购列表
     /mobile/groupon/getNavList   // 页面加载获取导航栏模块列表
     参数
     {}
@@ -125,7 +151,7 @@
     }
 
 
-4. 团购详情     (待完善)
+4. 团购详情    
     /mobile/groupon/getDetailsInfo          // 获取团购列表卡片对应详情数据
     参数
     {
@@ -140,8 +166,21 @@
 		}
     }
 
+    /mobile/groupon/addToCart          // 用户点击加入购物车选定规格后  点击加入购物车调用addToCart接口
+    参数
+    {}
+    响应数据
+    {
+        返回200
+    }
 
-    
+    /mobile/groupon/buyNow          // 用户点击立即抢按钮选定规格后  点击立即抢调用buyNow接口跳转结算页面
+    参数
+    {}
+    响应数据
+    {
+        返回200
+    }
 
 
 
@@ -190,12 +229,12 @@
     /mobile/wallet/getWalletInfo           // 获取用户余额
     参数
     {
-        openId: 'gaghlawigl2ih3li',          // 用户数据表主键openId?
+        openId: 'gaghlawigl2ih3li',          // 用户数据表主键,是否为openId?
     }
     响应数据
     {
         balance: '180.00',
-        isOpen: ture                        // 用户是否开通钱包标识   false  true   
+        isOpen: ture                        // 用户是否开通钱包标识   false  true || '0' '1'   
     }
 
 
@@ -240,9 +279,19 @@
 		]
     }
 
+    /mobile/wallet/payNow           // 立即充值 
+    参数
+    {
+        quota: quota  // 用户选项实付金额
+    }
+    响应数据
+    {
+        200
+    }
 
 
-7. 结算页面 (待完善)
+
+7. 结算页面 
     /mobile/settlement/getUserReceiptInfoList          // 获取用户编辑的收件信息列表
     参数
     {
@@ -312,9 +361,11 @@
                     
     }
 
+    /mobile/settlement/payment            //  确认支付  复用公众号接口  细节再做交流
+    
 
 
-8. 图库         (待完善)
+8. 图库    
     /mobile/gallery/getImgList            // 获取用户图库所有图片
     参数
     {
@@ -333,6 +384,55 @@
                     },
                 ]
     }
+
+    /mobile/gallery/getGroups       // 获取用户图库图片所有自定义分组
+    参数
+    {}
+    响应数据
+    {
+        groupList: [
+            {
+                groupName: '全部图片',    // 分组名
+                imgNum: '321'           //  分组包含图片数量
+                dataIndex: '01'         // 分组标识
+            },
+            {
+                groupName: 'Big Ben',    // 分组名
+                imgNum: '200'           //  分组包含图片数量
+                dataIndex: '02'
+            }
+        ]
+    }
+
+    /mobile/gallery/addGroup       // 新建分组
+    参数
+    {}
+    响应数据
+    {
+        200
+    }
+
+    /mobile/gallery/moveGroup       // 图片移入分组
+    参数
+    {
+        currentGroup: '01',                 // 01: 分组标识dataIndex
+        imgList: [1003,1016,1009,1010]      // 数组元素: 图片dataIndex
+        targetGroup: '02'
+    }
+
+
+    /mobile/gallery/deleteImg       // 删除图库图片
+    参数
+    {
+        dataIndex: groupDataIndex,      // 当前分组标识
+        imgList: [1001,1002]            // 当前分组选中的图片dataIndex
+    }
+    响应数据
+    {
+        200
+    }
+
+    /mobile/gallery/fillingImg       // 一件套图    公众号接口直接复用(细节再做交流)
 
 
 
@@ -772,11 +872,148 @@
     }
 
 
+11. 订单页
+    /mobile/order/getList           // 获取订单页各种状态下卡片数据
+    参数
+    {}
+    响应数据
+    {
+        list: [
+                // 全部
+                [
+                    {
+                        orderId: 8848,
+                        orderStauts: '待付款',
+                        specList: [
+                            {
+                                bookName: '书名书名',
+                                univalence: '176',          // 单价
+                                bookType: '32开标准本',
+                                editType: '自编辑',
+                                count: 1,
+                                pageCount: '96P',
+                                bookSize: '144*192mm',
+                            }
+                        ],
+                        totalNum: 1,
+                        totalPrice: 188.00,
+                        freight: 12.00,             // 运费
+                    },
+                    {
+                        orderId: 8849,
+                        orderStauts: '待收货',
+                        specList: [
+                            {
+                                bookName: '无感',
+                                univalence: '176',          // 单价
+                                bookType: '32开标准本',
+                                editType: '自编辑',
+                                count: 1,
+                                pageCount: '96P',
+                                bookSize: '144*192mm',
+                            },
+                            {
+                                bookName: '哈哈',
+                                univalence: '176',          // 单价
+                                bookType: '32开标准本',
+                                editType: '自编辑',
+                                count: 2,
+                                pageCount: '120P',
+                                bookSize: '144*192mm',
+                            }
+                        ],
+                        totalNum: 1,
+                        totalPrice: 188.00,
+                        freight: 12.00,             // 运费
+                    }
+                ],
+                // 待付款
+                [
+                    {
+                        orderId: 8850,
+                        orderStauts: '待付款',
+                        specList: [
+                            {
+                                bookName: '书名书名',
+                                univalence: '176',          // 单价
+                                bookType: '32开标准本',
+                                editType: '自编辑',
+                                count: 1,
+                                pageCount: '96P',
+                                bookSize: '144*192mm',
+                            }
+                        ],
+                        totalNum: 1,
+                        totalPrice: 188.00,
+                        freight: 12.00,             // 运费
+                    },
+                    {
+                        orderId: 8851,
+                        orderStauts: '待付款',
+                        specList: [
+                            {
+                                bookName: '无感',
+                                univalence: '176',          // 单价
+                                bookType: '32开标准本',
+                                editType: '自编辑',
+                                count: 1,
+                                pageCount: '96P',
+                                bookSize: '144*192mm',
+                            },
+                            {
+                                bookName: '哈哈',
+                                univalence: '176',          // 单价
+                                bookType: '32开标准本',
+                                editType: '自编辑',
+                                count: 2,
+                                pageCount: '120P',
+                                bookSize: '144*192mm',
+                            }
+                        ],
+                        totalNum: 1,
+                        totalPrice: 188.00,
+                        freight: 12.00,             // 运费
+                    }
+                ],
+                // 待发货
+                [],
+                // 已完成
+                [],
+                // 活动
+                []
+            ]
+    }
+
+    /mobile/order/confirmReceipt           // 确认收货 (复用公众号接口  细节再做交流)
+    参数
+    {}
+    响应数据
+    {
+        200
+    }
+
+    /mobile/order/addon           // 加印作品  (复用公众号接口  细节再做交流)
+    参数
+    {}
+    响应数据
+    {
+        200
+    }
+
+    <!-- /mobile/order/checkLogistics            // 查看物流   
+    参数
+    {
+        logisticsId : 'YT4307602353777'          // 物流号
+    }
+    响应数据
+    {
+
+    } -->
 
 
 
-
-
+    12. 首页
+    
 
 
 
