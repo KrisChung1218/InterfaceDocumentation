@@ -184,7 +184,7 @@
 
 
 
-5. 我的书架     (待完善)
+5. 我的书架     
     /mobile/bookshelf/getBoardInfo            // 获取用户最近编辑的作品名
     参数
     {}
@@ -192,8 +192,6 @@
     boardInfo: {
 		bookName: '哈哈哈哈哈'
 	},
-
-
 
 
 
@@ -221,6 +219,38 @@
                     },
 					
         ]
+    }
+
+
+
+    /mobile/bookshelf/getAllWorksOptionsList            // 获取下拉框分类数据
+    参数
+    {}
+    响应数据
+    {
+        allWorksOptionsList: [
+                    {
+                        text: '全部产品'
+                    },
+                    {
+                        text: '照片书'
+                    },
+                    {
+                        text: '照片书'
+                    },
+                    {
+                        text: '照片书'
+                    },
+                    {
+                        text: '照片书'
+                    },
+                    {
+                        text: '照片书'
+                    },
+                    {
+                        text: '照片书'
+                    },
+                ],
     }
 
 
@@ -1104,6 +1134,62 @@
     }
 
 
+    13. 产品详情界面
+    /mobile/classification/getProductDetailsInfo            // 产品详情界面加载获取对应产品信息
+    参数
+    {
+        productId: '03'         // 全部产品 产品分类界面点击对应产品card 页面传参产品id   请求接口获取信息
+    }
+    响应数据
+    {
+        // 轮播banner 
+        swiperItemList: [
+                    {
+                        bannerSrc: ''
+                    },
+                    {
+                        bannerSrc: ''
+                    },
+                    {
+                        bannerSrc: ''
+                    }
+                ],
+
+        // 对应产品尺寸
+        size: '170×225MM',
+
+        // 选择规格弹窗多规格
+        specsList:[         
+                    {
+                        spec: '80P',
+                        price: '￥188'   // 对应规格价格
+                    },
+                    {
+                        spec: '120P',
+                        price: '￥388'   // 对应规格价格
+                    },
+                    {
+                        spec: '140P',
+                        price: '￥256'   // 对应规格价格
+                    }
+                ],
+
+        // 产品详情图
+        productDetailsImgList: [
+                    {
+                        imgSrc: ''
+                    },
+                    {
+                        imgSrc: ''
+                    },
+                    {
+                        imgSrc: ''
+                    },
+                    {
+                        imgSrc: ''
+                    }
+                ]
+    }
 
 
 
