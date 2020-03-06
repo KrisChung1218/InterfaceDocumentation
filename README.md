@@ -1194,5 +1194,61 @@
 
 
 
+    13. 公共搜索页面
+    /mobile/search/getHotKeywordList        // 获取用户热门搜索关键词   (不好做就不做  具体和alice讨论一下)
+    参数
+    {}
+    响应数据
+    {
+        hotKeywordList: ['键盘', '鼠标', '显示器', '电脑主机', '蓝牙音箱', '笔记本电脑', '鼠标垫', 'USB', 'USB3.0']
+    }
+
+
+    /mobile/search/getGoodsInfo             // 根据用户输入关键词搜索相关产品  模糊查询
+    参数
+    {
+        userInputText: '文艺肖方册'
+    }
+    响应参数
+    {
+        goodsList: [
+            {
+                imgSrc: '',                 // 产品封面
+                bookName: '文艺小方册',
+                price: '378'
+            }
+        ]
+    }
+
+
+
+    /mobile/search/getRecommendList             // 为你推荐 产品列表
+    参数
+    {}
+    响应数据
+    {
+        recommendList : [
+            {
+                imgSrc: '',                 // 产品封面
+                bookName: '文艺小方册',
+                price: '378'
+            },
+            {
+                imgSrc: '',                 // 产品封面
+                bookName: '软皮映画本',
+                price: '322'
+            },
+            {
+                imgSrc: '',                 // 产品封面
+                bookName: '精装布面大开本',
+                price: '128'
+            }
+        ]
+    }
+
+
+
+
+
 
 
