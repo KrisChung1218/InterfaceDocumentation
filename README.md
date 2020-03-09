@@ -1248,6 +1248,79 @@
 
 
 
+    14. 编辑列表页
+    /mobile/editor/getPagesList             // 获取九宫格编辑列表页书本page列表
+    参数
+    {
+        bookId: '1231'      // 书本id
+    }
+    响应数据
+    {
+        pagesList: [
+					// 固定页 列表
+					[
+						{
+							data_type: 'COVER',
+							data_type_name: '封面',
+							data_id: '168785',
+							imgSrc: ''
+						},
+						{
+							data_type: 'TITLE',
+							data_type_name: '扉页',
+							data_id: '168785',
+							imgSrc: ''
+						},
+						{
+							data_type: 'BLANK',
+							data_type_name: '空白页',
+							data_id: '168785',
+							imgSrc: ''
+						}
+					],
+					// 正文 列表
+					[
+						{
+							data_type: 'CONTENT',
+							data_type_name: '正文',
+							data_id: '168785',
+							imgSrc: ''
+						},
+						{
+							data_type: 'CONTENT',
+							data_type_name: '正文',
+							data_id: '168785',
+							imgSrc: ''
+						},
+						{
+							data_type: 'CONTENT',
+							data_type_name: '正文',
+							data_id: '168785',
+							imgSrc: ''
+						},
+					],
+					// 固定页 列表
+					[
+						{
+							data_type: 'COPYRIGHT',
+							data_type_name: '版权页',
+							data_id: '168785',
+							imgSrc: ''
+						},
+						{
+							data_type: 'BOTTOM',
+							data_type_name: '封底',
+							data_id: '168785',
+							imgSrc: ''
+						},
+
+					],
+					
+				]
+    }
+
+
+
 
 
 
