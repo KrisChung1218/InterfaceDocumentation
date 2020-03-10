@@ -1321,6 +1321,50 @@
 
 
 
+    15. 预览页
+    /mobile/preview/getBookInfo             // 获取书本信息
+    参数
+    {
+        bookId: '1256'
+    }
+    响应数据
+    {
+        // 书本 书名规格等信息
+        bookName: '小甜豆'
+        bookType: '32开标准本',
+		bookSpec: '92P',
+
+        // 书本每一页信息
+        swiperList: [       
+					{
+						imgSrc: '',
+						data_type: 'COVER'
+					},
+					{
+						imgSrc: '',
+						data_type: 'TITLE'
+					},
+					{
+						imgSrc: '',
+						data_type: 'BLANK'
+					},
+					{
+						imgSrc: '',
+						data_type: 'CONTENT'
+					},
+					{
+						imgSrc: '',
+						data_type: 'COPYRIGHT'
+					},
+					{
+						imgSrc: '',
+						data_type: 'BOTTOM'
+					}
+				]
+    }
+
+
+
 
 
 
