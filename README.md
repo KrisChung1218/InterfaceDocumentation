@@ -406,11 +406,13 @@
         imgList: [
                     {
                         imgSrc: '',       // 图片src
-                        dataIndex: '1001',  // 图片标识，删除 移动 填图 等操作以dataIndex作为参数
+                        dataIndex: '1001',  // 图片标识，删除 移动 填图 套图 等操作以dataIndex作为参数
+						isSelect: false,      // 写死
                     },
                     {
                         imgSrc: '',       // 图片src
-                        dataIndex: '1002',  // 图片标识，删除 移动 填图 等操作以dataIndex作为参数
+                        dataIndex: '1002',  // 图片标识，删除 移动 填图 套图 等操作以dataIndex作为参数
+						isSelect: false,
                     },
                 ]
     }
