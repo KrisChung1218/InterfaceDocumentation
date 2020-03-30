@@ -3,7 +3,7 @@
 
 ------------------------------------------------------------ 接口部分 --------------------------------------------------------
 1. 购物车   
-    /mobile/cart/getOrderList		查询购物车卡片数据
+    <!-- /mobile/cart/getOrderList		查询购物车卡片数据
     参数
     {
         openId: ‘12149212148’  用户微信openid
@@ -43,7 +43,7 @@
             }
         ],
         
-    }
+    } -->
 
     /mobile/cart/delteCard		删除购物车卡片
     参数
@@ -102,7 +102,7 @@
     
 
 
-3. 团购列表
+<!-- 3. 团购列表
     /mobile/groupon/getNavList   // 页面加载获取导航栏模块列表
     参数
     {}
@@ -115,10 +115,10 @@
     参数
     {}
     响应数据
-    参考：https://test.yibenprint.com/mobile/groupon/getNavList/ 的返回数据
+    参考：https://test.yibenprint.com/mobile/groupon/getNavList/ 的返回数据 -->
 
 
-4. 团购详情    
+<!-- 4. 团购详情    
     /mobile/groupon/getDetailsInfo          // 获取团购列表卡片对应详情数据
     参数
     {
@@ -133,37 +133,13 @@
 			soldNum: 33,								// 已售件数
 			productDetailsImgList: ['','','','','','']	// 产品详情图片路径			
 		}
-    }
+    } -->
 
-    /mobile/groupon/addToCart          // 用户点击加入购物车选定规格后  点击加入购物车调用addToCart接口
-    // 可以使用原来的/cart/ajax/add/接口
-    参数
-    {}
-    响应数据
-    {
-        返回200
-    }
-
-    /mobile/groupon/buyNow          // 用户点击立即抢按钮选定规格后  点击立即抢调用buyNow接口跳转结算页面
-    参数
-    {}
-    响应数据
-    {
-        返回200
-    }
 
 
 
 5. 我的书架   
-/*  取消这个接口，返回数据放到getWorksList
-    /mobile/bookshelf/getBoardInfo            // 获取用户最近编辑的作品名
-    参数
-    {}
-    响应数据
-    boardInfo: {
-		bookName: '哈哈哈哈哈'
-	},
-*/
+
 
 
     /mobile/bookshelf/getWorksList            // 获取我的书架卡片数据(无则返回空对象)
@@ -622,7 +598,7 @@
 
 
 //=========
-    14. 编辑列表页
+    <!-- 14. 编辑列表页
     /mobile/editor/getPagesList             // 获取九宫格编辑列表页书本page列表
     参数
     {
@@ -637,9 +613,7 @@
                 data_id: '168785',
                 imgSrc: ''
             },
-						
-					
-    }
+    } -->
 
 
 
